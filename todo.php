@@ -1,54 +1,39 @@
-<!DOCTYPE html>
+<?php
 
-<?php session_start(); ?>
+session_start();
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Task List</title>
+if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
+    $task = [];
 
-    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> 
+    $task['name'] = $_GET['name'];
 
-    <link rel="stylesheet" href="todo.css">
-</head>
-<body>
-    <h1 id="title">Task List</h1>
+    if (array_key_exists('description', $_GET)) {
+        $task['description'] = $_GET['description'];
+    } else {
+        $task['description'] = '';
+    }
 
-    <!-- this code creates a form to enter the task data -->
-    <form action="">
-        
-        <label for="task"> Task </label>
-        <input type="text" name="name" id="task" placeholder="Write your task here...">
-        <input type="submit" value="Enter">
-    
-    </form>
+    if (array_key_exists('term', $_GET)) {
+        $task['term'] = $_GET['term'];
+    } else {
+        $task['term'] = '';
+    }
 
-    <!-- save tasks to an array-->
-    <?php
-    
-        if (array_key_exists('name', $_GET)) {
-            $_SESSION['tasksList'][] = $_GET['name'];
-        }
-        $tasksList = [];
-        if (array_key_exists('tasksList', $_SESSION)) {
-            $tasksList = $_SESSION['tasksList'];
-        }
-    ?>
+    $task['priority'] = $_GET['priority'];
 
-    <!-- show tasks list -->
-    <table>
-        <tr>
-            <th>Tasks</th>
-        </tr>
+    if (array_key_exists('completed', $_GET)) {
+        $task['completed'] = $_GET['completed'];
+    } else {
+        $task['completed'] = '';
+    }
 
-        <?php foreach($tasksList as $task) : ?>
+    $_SESSION['tasksList'][] = $task;
+}
 
-            <tr>
-                <td><?php echo $task; ?></td>
-            </tr>
+$tasksList = [];
 
-        <?php endforeach; ?>
-    </table>
-</body>
-</html>
+if (array_key_exists('tasksList', $_SESSION)) {
+    $tasksList = $_SESSION['tasksList'];
+}
+
+include "template.php";
