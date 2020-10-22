@@ -73,7 +73,7 @@
                 <td><?php echo $task['name']; ?></td>
                 <td><?php echo $task['description']; ?></td>
                 <td><?php echo $task['term']; ?></td>
-                <td><?php echo $task['priority']; ?></td>
+                <td><?php echo writePriority($task['priority']); ?></td>
                 <td><?php echo $task['completed']; ?></td>
             </tr>
 

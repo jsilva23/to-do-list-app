@@ -3,6 +3,7 @@
 session_start();
 
 require 'dbase.php';
+require 'helpers.php';
 
 if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
     $task = [];
