@@ -17,7 +17,7 @@ if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
     }
 
     if (array_key_exists('term', $_GET)) {
-        $task['term'] = $_GET['term'];
+        $task['term'] = convertDateToDatabase($_GET['term']);
     } else {
         $task['term'] = '';
     }
@@ -25,9 +25,9 @@ if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
     $task['priority'] = $_GET['priority'];
 
     if (array_key_exists('completed', $_GET)) {
-        $task['completed'] = $_GET['completed'];
+        $task['completed'] = 1;
     } else {
-        $task['completed'] = '';
+        $task['completed'] = 0;
     }
 
     saveTask($conection, $task);

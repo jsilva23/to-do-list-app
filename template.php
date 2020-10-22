@@ -48,7 +48,7 @@
 
             <label for="">
                 Completed task:
-                <input type="checkbox" name="completed" velue="yes">
+                <input type="checkbox" name="completed" velue="1">
             </label>    
 
             <input type="submit" value="Enter">
@@ -72,9 +72,9 @@
             <tr>
                 <td><?php echo $task['name']; ?></td>
                 <td><?php echo $task['description']; ?></td>
-                <td><?php echo $task['term']; ?></td>
+                <td><?php echo convertDateToShow($task['term']); ?></td>
                 <td><?php echo writePriority($task['priority']); ?></td>
-                <td><?php echo $task['completed']; ?></td>
+                <td><?php echo convertCompleted($task['completed']); ?></td>
             </tr>
 
         <?php endforeach; ?>

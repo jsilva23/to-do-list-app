@@ -2,7 +2,7 @@
 
 $dbServer = 'localhost';
 $dbUser = 'root';
-$dbPasseword = '';
+$dbPasseword = 'master#1998';
 $dataBase = 'todolist';
 
 $conection = mysqli_connect($dbServer, $dbUser, $dbPasseword, $dataBase);
@@ -31,12 +31,14 @@ function saveTask($conection, $task)
 {
     $sqlSave = "
         INSERT INTO tasks
-        (name, description, priority)
+        (name, description, priority, term, completed)
         VALUES
         (
             '{$task['name']}',
             '{$task['description']}',
-            '{$task['priority']}'
+            '{$task['priority']}',
+            '{$task['term']}',
+            {$task['completed']}
         )    
     ";
 
