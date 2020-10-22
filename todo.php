@@ -29,7 +29,8 @@ if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
         $task['completed'] = '';
     }
 
-    $_SESSION['tasksList'][] = $task;
+    saveTask($conection, $task);
+
 }
 
 $tasksList = searchTasks($conection);

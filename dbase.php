@@ -26,3 +26,19 @@ function searchTasks($conection)
 
     return $tasks;
 }
+
+function saveTask($conection, $task)
+{
+    $sqlSave = "
+        INSERT INTO tasks
+        (name, description, priority)
+        VALUES
+        (
+            '{$task['name']}',
+            '{$task['description']}',
+            '{$task['priority']}'
+        )    
+    ";
+
+    mysqli_query($conection, $sqlSave);
+}

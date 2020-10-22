@@ -35,13 +35,13 @@
             <fieldset>
                 <legend>Priority:</legend>
                 <label for="">
-                    <input type="radio" name="priority" value="Low" checked>
+                    <input type="radio" name="priority" value="1" checked>
                     Low
 
-                    <input type="radio" name="priority" value="Middle">
+                    <input type="radio" name="priority" value="2">
                     Middle
 
-                    <input type="radio" name="priority" value="Hight">
+                    <input type="radio" name="priority" value="3">
                     Hight
                 </label>
             </fieldset>
