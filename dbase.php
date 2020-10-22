@@ -2,7 +2,7 @@
 
 $dbServer = 'localhost';
 $dbUser = 'root';
-$dbPasseword = 'master#1998';
+$dbPasseword = '';
 $dataBase = 'todolist';
 
 $conection = mysqli_connect($dbServer, $dbUser, $dbPasseword, $dataBase);
