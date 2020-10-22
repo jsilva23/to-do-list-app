@@ -2,6 +2,8 @@
 
 session_start();
 
+require 'dbase.php';
+
 if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
     $task = [];
 
@@ -30,10 +32,6 @@ if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
     $_SESSION['tasksList'][] = $task;
 }
 
-$tasksList = [];
+$tasksList = searchTasks($conection);
 
-if (array_key_exists('tasksList', $_SESSION)) {
-    $tasksList = $_SESSION['tasksList'];
-}
-
-include "template.php";
+require "template.php";
