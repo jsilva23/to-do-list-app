@@ -7,28 +7,28 @@ require 'helpers.php';
 
 $show_table = false;
 
-if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
+if (array_key_exists('name', $_POST) && $_POST['name'] != '') {
     $task = [];
 
-    $task['id'] = $_GET['id'];
+    $task['id'] = $_POST['id'];
 
-    $task['name'] = $_GET['name'];
+    $task['name'] = $_POST['name'];
 
-    if (array_key_exists('description', $_GET)) {
-        $task['description'] = $_GET['description'];
+    if (array_key_exists('description', $_POST)) {
+        $task['description'] = $_POST['description'];
     } else {
         $task['description'] = '';
     }
 
-    if (array_key_exists('term', $_GET)) {
-        $task['term'] = convertDateToDatabase($_GET['term']);
+    if (array_key_exists('term', $_POST)) {
+        $task['term'] = convertDateToDatabase($_POST['term']);
     } else {
         $task['term'] = '';
     }
 
-    $task['priority'] = $_GET['priority'];
+    $task['priority'] = $_POST['priority'];
 
-    if (array_key_exists('completed', $_GET)) {
+    if (array_key_exists('completed', $_POST)) {
         $task['completed'] = 1;
     } else {
         $task['completed'] = 0;
@@ -38,6 +38,6 @@ if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
 
 }
 
-$tasksList = searchTask($conection, $_GET['id']);
+$tasksList = searchTask($conection, $_POST['id']);
 
 require "template.php";

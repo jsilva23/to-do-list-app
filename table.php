@@ -17,7 +17,10 @@
             <td><?php echo convertDateToShow($task['term']); ?></td>
             <td><?php echo writePriority($task['priority']); ?></td>
             <td><?php echo convertCompleted($task['completed']); ?></td>
-            <td><a href="edit.php?id=<?php echo $task['id'];?>">Edit</a></td>
+            <td>
+                <a href="edit.php?id=<?php echo $task['id'];?>">Edit</a>
+                <a href="remove.php?id=<?php echo $task['id']; ?>">Remove</a>
+            </td>
         </tr>
 
     <?php endforeach; ?>

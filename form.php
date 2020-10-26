@@ -1,5 +1,5 @@
 <!-- this code creates a form to enter the task data -->
-<form action="">
+<form method="POST">
 
     <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
 
@@ -39,7 +39,7 @@
             <input type="checkbox" name="completed" velue="1" <?php echo ($task['completed'] == 1)? 'checked' : '';?>>
         </label>    
 
-        <input type="submit" value="<?php echo ($task['id'] > 0)? 'Update' : 'Register'?>">
+        <input type="submit" value="<?php echo ($task['id'] > 0)? 'Update' : 'Register';?>">
 
     </fieldset>
 

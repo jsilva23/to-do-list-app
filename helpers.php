@@ -58,17 +58,3 @@ function convertCompleted($completed)
     return 'No';
 }
 
-function editTask($conection, $task)
-{
-    $sqlEdit = "
-        UPDATE tasks SET
-            name = '{$task['name']}',
-            description = '{$task['description']}',
-            priority = '{$task['priority']}',
-            term = '{$task['term']}',
-            completed = '{$task['completed']}'
-        WHERE id = {$task['id']}
-    ";
-
-    mysqli_query($conection, $sqlEdit);
-}
