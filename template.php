@@ -13,71 +13,10 @@
 <body>
     <h1 id="title">Task List</h1>
 
-    <!-- this code creates a form to enter the task data -->
-    <form action="">
-        <fieldset>
-            <legend>New task</legend>
-            <label for="task">
-                Task
-                <input type="text" name="name" id="task" placeholder="Write your task here...">  
-            </label>
+    <?php require 'form.php'; ?>
 
-            <label for="">
-                Description (Optional):
-                <textarea name="description"></textarea>
-            </label>
-
-            <label for="">
-                Term (Optional):
-                <input type="text" name="term">
-            </label>
-
-            <fieldset>
-                <legend>Priority:</legend>
-                <label for="">
-                    <input type="radio" name="priority" value="1" checked>
-                    Low
-
-                    <input type="radio" name="priority" value="2">
-                    Middle
-
-                    <input type="radio" name="priority" value="3">
-                    Hight
-                </label>
-            </fieldset>
-
-            <label for="">
-                Completed task:
-                <input type="checkbox" name="completed" velue="1">
-            </label>    
-
-            <input type="submit" value="Enter">
-
-        </fieldset>
-        
-    </form>
-
-    <!-- show tasks list -->
-    <table>
-        <tr>
-            <th>Tasks</th>
-            <th>Description</th>
-            <th>Term</th>
-            <th>Priority</th>
-            <th>Completed</th>
-        </tr>
-
-        <?php foreach($tasksList as $task) : ?>
-
-            <tr>
-                <td><?php echo $task['name']; ?></td>
-                <td><?php echo $task['description']; ?></td>
-                <td><?php echo convertDateToShow($task['term']); ?></td>
-                <td><?php echo writePriority($task['priority']); ?></td>
-                <td><?php echo convertCompleted($task['completed']); ?></td>
-            </tr>
-
-        <?php endforeach; ?>
-    </table>
+    <?php if ($show_table) : ?>
+        <?php require 'table.php'; ?>
+    <?php endif; ?>    
 </body>
 </html>

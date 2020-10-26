@@ -44,3 +44,10 @@ function saveTask($conection, $task)
 
     mysqli_query($conection, $sqlSave);
 }
+
+function searchTask($conection, $id)
+{
+    $sqlSearch = 'SELECT * FROM tasks WHERE id = ' . $id;
+    $result = mysqli_query($conection, $sqlSearch);
+    return mysqli_fetch_assoc($result);
+}

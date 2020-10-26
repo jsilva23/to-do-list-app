@@ -5,10 +5,12 @@ session_start();
 require 'dbase.php';
 require 'helpers.php';
 
-$show_table = true;
+$show_table = false;
 
 if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
     $task = [];
+
+    $task['id'] = $_GET['id'];
 
     $task['name'] = $_GET['name'];
 
@@ -32,19 +34,10 @@ if (array_key_exists('name', $_GET) && $_GET['name'] != '') {
         $task['completed'] = 0;
     }
 
-    saveTask($conection, $task);
+    editTask($conection, $task);
 
 }
 
-$tasksList = searchTasks($conection);
-
-$task = [
-    'id' => 0,
-    'name' => '',
-    'description' => '',
-    'term' => '',
-    'priority' => 1,
-    'completed' => ''
-];
+$tasksList = searchTask($conection, $_GET['id']);
 
 require "template.php";
