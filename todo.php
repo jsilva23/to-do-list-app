@@ -7,10 +7,18 @@ require 'helpers.php';
 
 $show_table = true;
 
-if (array_key_exists('name', $_POST) && $_POST['name'] != '') {
+$isThereError = false;
+$validationErrors = [];
+
+if (isTherePost()) {
     $task = [];
 
-    $task['name'] = $_POST['name'];
+    if (array_key_exists('name', $_POST) && strlen($_POST['name']) > 0) {
+        $task['name'] = $_POST['name'];   
+    } else {
+        $isThereError = true;
+        $validationErrors['name'] = 'The task is necessary';        
+    }
 
     if (array_key_exists('description', $_POST)) {
         $task['description'] = $_POST['description'];
@@ -32,10 +40,11 @@ if (array_key_exists('name', $_POST) && $_POST['name'] != '') {
         $task['completed'] = 0;
     }
 
-    saveTask($conection, $task);
-
-    header('Loacation: todo.php');
-    die();
+    if (!$isThereError) {
+        saveTask($conection, $task);
+        header('Loacation: todo.php');
+        die();
+    }
 
 }
 

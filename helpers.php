@@ -58,3 +58,11 @@ function convertCompleted($completed)
     return 'No';
 }
 
+function isTherePost()
+{
+    if (count($_POST) > 0) {
+        return true;
+    }
+    return false;
+}
+
