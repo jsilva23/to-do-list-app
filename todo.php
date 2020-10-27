@@ -52,11 +52,11 @@ $tasksList = searchTasks($conection);
 
 $task = [
     'id' => 0,
-    'name' => '',
-    'description' => '',
-    'term' => '',
-    'priority' => 1,
-    'completed' => ''
+    'name' => (array_key_exists('name', $_POST))? $_POST['name'] : '',
+    'description' => (array_key_exists('description', $_POST))? $_POST['description'] : '',
+    'term' => (array_key_exists('term', $_POST))? convertDateToDatabase($_POST['term']) : '',
+    'priority' => (array_key_exists('priority', $_POST))? $_POST['priority'] : 1,
+    'completed' => (array_key_exists('completed', $_POST))? $_POST['completed'] : ''
 ];
 
 require "template.php";

@@ -6,7 +6,12 @@
     <fieldset>
         <legend>New task</legend>
         <label for="task">
-            Task
+            Task:
+            <?php if ($isThereError && array_key_exists('name', $validationErrors)) : ?>
+                <span class="error">
+                    <?php echo $validationErrors['name']; ?>
+                </span>
+            <?php endif; ?>    
             <input type="text" name="name" id="task" value="<?php echo $task['name']; ?>">  
         </label>
 
