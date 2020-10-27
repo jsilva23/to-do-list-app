@@ -28,11 +28,16 @@ function convertDateToDatabase($date)
         return "";
     }
 
-    $data = explode("/", $date);
+    $parts = explode("/", $date);
 
-    $db_date = "{$data[2]}-{$data[1]}-{$data[0]}";
+    if (count($parts) != 3) {
+        return $date;
+    }
 
-    return $db_date;
+    $objDate = DateTime::createFromFormat('d/m/Y', $date);
+    
+    return $objDate->format('Y-m-d');
+
 }
 
 
@@ -42,11 +47,16 @@ function convertDateToShow($date)
         return "";
     }
 
-    $data = explode("-", $date);
+    $parts = explode("-", $date);
 
-    $show_date = "{$data[2]}/{$data[1]}/{$data[0]}";
+    if (count($parts) != 3) {
+        return $date;
+    }
 
-    return $show_date;
+    $objDate = DateTime::createFromFormat('Y-m-d', $date);
+    
+    return $objDate->format('d/m/Y');
+
 }
 
 function convertCompleted($completed)
@@ -66,3 +76,22 @@ function isTherePost()
     return false;
 }
 
+function validateDate($date)
+{
+    $standard = '/^[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{4}$/';
+    $result = preg_match($standard, $date);
+
+    if ($result == 0) {
+        return false;
+    }
+
+    $data = explode('/', $date);
+
+    $day = $data[0];
+    $month = $data[1];
+    $year = $data[2];
+
+    $result = checkdate($month, $day, $year);
+
+    return $result;
+}

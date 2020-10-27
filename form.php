@@ -22,6 +22,9 @@
 
         <label for="">
             Term (Optional):
+            <?php if ($isThereError && array_key_exists('term', $validationErrors)) :?>
+                <span class="error"> <?php echo $validationErrors['term']; ?> </span>
+            <?php endif; ?>
             <input type="text" name="term" value="<?php echo convertDateToShow($task['term']); ?>">
         </label>
 

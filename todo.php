@@ -26,8 +26,13 @@ if (isTherePost()) {
         $task['description'] = '';
     }
 
-    if (array_key_exists('term', $_POST)) {
-        $task['term'] = convertDateToDatabase($_POST['term']);
+    if (array_key_exists('term', $_POST) && strlen($_POST['term']) > 0) {
+        if (validateDate($_POST['term']) > 0) {
+            $task['term'] = convertDateToDatabase($_POST['term']);   
+        } else {
+            $isThereError = true;
+            $validationErrors['term'] = 'Deadline is not a valid date';
+        }
     } else {
         $task['term'] = '';
     }
